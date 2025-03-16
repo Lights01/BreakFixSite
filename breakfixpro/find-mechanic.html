@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find Mechanic | BreakFixPro</title>
+  <!-- Styles -->
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <!-- Leaflet.js CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+
+<body>
+  <!-- Header -->
+  <header id="main-header">
+    <div class="container">
+      <div class="logo">
+        <h1><a href="index.html">BreakFixPro</a></h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="ai-troubleshooting.html">AI Troubleshooting</a></li>
+          <li><a href="find-mechanic.html" class="active">Find Mechanic</a></li>
+          <li><a href="maintenance.html">Maintenance</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="about-us.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li class="language-selector">
+            <select>
+              <option>English</option>
+              <option>नेपाली</option>
+            </select>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>Find Nearby Mechanics</h1>
+      <p>Connect with certified mechanics in your area</p>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section class="map-section">
+    <div class="container">
+      <div id="map"></div> <!-- Map container -->
+    </div>
+  </section>
+
+  <!-- Mechanic Finder Section -->
+  <section class="mechanic-finder">
+    <div class="container">
+      <div class="search-controls">
+        <div class="search-bar">
+          <input type="text" placeholder="Search mechanics or services...">
+          <button class="search-btn"><i class="fas fa-search"></i></button>
+        </div>
+        <button class="location-btn"><i class="fas fa-map-marker-alt"></i> Use My Location</button>
+      </div>
+
+      <div class="filter-options">
+        <div class="distance-filter">
+          <label>Distance (km): <span id="distance-value">5</span></label>
+          <input type="range" min="1" max="25" value="5" class="slider" id="distance-slider">
+        </div>
+        <div class="rating-filter">
+          <label><i class="fas fa-star"></i> Rating:</label>
+          <select>
+            <option>All Ratings</option>
+            <option>4.5+</option>
+            <option>4.0+</option>
+            <option>3.5+</option>
+          </select>
+        </div>
+        <div class="availability-filter">
+          <label><i class="fas fa-clock"></i> Availability:</label>
+          <select>
+            <option>Any Time</option>
+            <option>Available Now</option>
+            <option>Open 24/7</option>
+          </select>
+        </div>
+        <div class="specialization-filter">
+          <label><i class="fas fa-tools"></i> Specialization:</label>
+          <select>
+            <option>All Services</option>
+            <option>Engine</option>
+            <option>Transmission</option>
+            <option>Brakes</option>
+            <option>Electrical</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="mechanics-list">
+        <div class="mechanic-card">
+          <div class="mechanic-info">
+            <h3>Quick Fix Auto</h3>
+            <p><i class="fas fa-map-marker-alt"></i> 0.8 km away</p>
+            <p><i class="fas fa-star"></i> 4.8 (86 reviews)</p>
+            <p><i class="fas fa-clock"></i> Available Now</p>
+            <div class="specialties">
+              <span class="specialty-tag">Engine</span>
+              <span class="specialty-tag">Transmission</span>
+              <span class="specialty-tag">Brakes</span>
+            </div>
+          </div>
+          <div class="mechanic-actions">
+            <button class="contact-btn"><i class="fas fa-phone-alt"></i> Contact</button>
+            <button class="directions-btn"><i class="fas fa-directions"></i> Directions</button>
+          </div>
+        </div>
+
+        <div class="mechanic-card">
+          <div class="mechanic-info">
+            <h3>Pro Mechanics</h3>
+            <p><i class="fas fa-map-marker-alt"></i> 1.2 km away</p>
+            <p><i class="fas fa-star"></i> 4.5 (42 reviews)</p>
+            <p><i class="fas fa-clock"></i> Available Now</p>
+            <div class="specialties">
+              <span class="specialty-tag">Electrical</span>
+              <span class="specialty-tag">Diagnostics</span>
+              <span class="specialty-tag">Engine</span>
+            </div>
+          </div>
+          <div class="mechanic-actions">
+            <button class="contact-btn"><i class="fas fa-phone-alt"></i> Contact</button>
+            <button class="directions-btn"><i class="fas fa-directions"></i> Directions</button>
+          </div>
+        </div>
+
+        <div class="mechanic-card">
+          <div class="mechanic-info">
+            <h3>Shiva's Auto Service</h3>
+            <p><i class="fas fa-map-marker-alt"></i> 2.4 km away</p>
+            <p><i class="fas fa-star"></i> 4.3 (28 reviews)</p>
+            <p><i class="fas fa-clock"></i> Closes at 7 PM</p>
+            <div class="specialties">
+              <span class="specialty-tag">AC Repair</span>
+              <span class="specialty-tag">Suspension</span>
+              <span class="specialty-tag">Brakes</span>
+            </div>
+          </div>
+          <div class="mechanic-actions">
+            <button class="contact-btn"><i class="fas fa-phone-alt"></i> Contact</button>
+            <button class="directions-btn"><i class="fas fa-directions"></i> Directions</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="offline-mechanics">
+        <h3><i class="fas fa-hdd"></i> Cached Mechanics List</h3>
+        <p>These mechanics are available in offline mode:</p>
+        <ul class="cached-mechanics-list">
+          <li>Ram's Auto Repair - 3.5 km - 4.2★ - General Repairs</li>
+          <li>Himalayan Motors - 4.1 km - 4.6★ - Electrical & Engine</li>
+          <li>Everest Auto Care - 5.2 km - 4.0★ - Transmission Specialist</li>
+        </ul>
+      </div>
+
+      <div class="real-time-updates">
+        <h3><i class="fas fa-clock"></i> Real-time Mechanic Availability</h3>
+        <p>When online, you'll receive instant updates on mechanic availability and response times.</p>
+        <div class="update-status">
+          <span class="status-indicator online"></span> System is online - Receiving real-time updates
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature Details Section -->
+  <section class="feature-details">
+    <div class="container">
+      <div class="feature-cards">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-map-marked-alt"></i>
+          </div>
+          <h3>GPS-based Mechanic Search</h3>
+          <p>Find mechanics near you with filters for distance, ratings, and availability</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-hdd"></i>
+          </div>
+          <h3>Cached Mechanic List</h3>
+          <p>Access a list of nearby mechanics and workshops even when offline</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <h3>Real-time Updates</h3>
+          <p>Get current information on mechanic availability and estimated response times</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="quick-links-footer">
+    <div class="container">
+      <div class="quick-links-container">
+        <div class="footer-brand">
+          <h3>BreakFixPro</h3>
+          <p>24/7 AI-powered vehicle emergency support and maintenance solutions.</p>
+        </div>
+
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="about-us.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-language">
+          <h3>Language</h3>
+          <button class="language-btn">
+            <i class="fas fa-globe"></i> English
+          </button>
+        </div>
+      </div>
+
+      <div class="copyright-bar">
+        <p>&copy; 2023 BreakFixPro. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
